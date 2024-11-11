@@ -20,7 +20,12 @@ function LoginPage() {
                 return;
             }
 
-            const response = await axios.post('http://localhost:8081/auth/signin', { username, password });
+            // const response = await axios.post('http://localhost:8081/auth/signin', { username, password });
+            const response = await axios.post('http://localhost:8081/auth/signin', 
+                { email: username, password },
+                { withCredentials: true }
+            );
+            
             console.log('Login successful:', response.data);
             history('/dashboard');
         } catch (error) {
